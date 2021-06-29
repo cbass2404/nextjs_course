@@ -7,7 +7,7 @@ const SelectedClientProjectPage = () => {
 
     return (
         <div>
-            <h1>Selected Project of a Specific Client</h1>
+            <h1>The Project of a Given Client</h1>
         </div>
     );
 };

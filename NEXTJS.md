@@ -82,7 +82,7 @@ const PortfolioProjectPage = () => {
 export default PortfolioProjectPage;
 ```
 
-## Slug files
+### Slug files
 
 ```javascript
 // filename [...slug].js
@@ -105,7 +105,7 @@ const BlogPostsPage = () => {
 export default BlogPostsPage;
 ```
 
-## Links
+### Links
 
 Next has a native Link import from 'next/Link' to navigate within the app, just as with React 'a' tags are only used to navigate away from the application.
 
@@ -135,7 +135,7 @@ export default HomePage;
         -   gives the route to navigate to
     -   lots more
 
-## Dynamic routes
+### Dynamic routes
 
 ```javascript
 import Link from 'next/Link';
@@ -170,4 +170,50 @@ const ClientsPage = () => {
 export default ClientsPage;
 ```
 
-## Programatic Routes
+### Programatic Routes
+
+-   This is done through making use of an onClick handler or something equivalent and using the router.push function as below
+
+```javascript
+import { useRouter } from 'next/router';
+
+const ClientProjectsPage = () => {
+    const router = useRouter();
+
+    console.log(router.query);
+
+    const handleLoadProject = () => {
+        router.push({
+            pathname: '/clients/[id]/[clientproject]',
+            query: { id: 'max', clientproject: 'projecta' },
+        });
+    };
+
+    return (
+        <div>
+            <h1>The Projects of a Given Client</h1>
+            <button onClick={handleLoadProject}>Load Project A</button>
+        </div>
+    );
+};
+
+export default ClientProjectsPage;
+```
+
+### NoMatch route
+
+-   Nextjs makes this easy
+    -   in pages route directory create a file called 404.js and design the page accordingly
+
+```javascript
+// /pages/404.js
+const NotFoundPage = () => {
+    return (
+        <div>
+            <h1>Page not found :(</h1>
+        </div>
+    );
+};
+
+export default NotFoundPage;
+```
