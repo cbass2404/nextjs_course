@@ -127,3 +127,47 @@ const HomePage = () => {
 
 export default HomePage;
 ```
+
+-   Link has many props to use and improve its basic functionality
+    -   replace
+        -   makes the routes component replace the current component
+    -   href
+        -   gives the route to navigate to
+    -   lots more
+
+## Dynamic routes
+
+```javascript
+import Link from 'next/Link';
+
+const ClientsPage = () => {
+    const clients = [
+        { id: 'max', name: 'Maximilian' },
+        { id: 'manu', name: 'Manuel' },
+    ];
+
+    return (
+        <div>
+            <h1>The Clients Page</h1>
+            <ul>
+                {clients.map(({ id, name }) => (
+                    <li key={id}>
+                        <Link
+                            href={{
+                                pathname: 'clients/[id]',
+                                query: { id },
+                            }}
+                        >
+                            {name}
+                        </Link>
+                    </li>
+                ))}
+            </ul>
+        </div>
+    );
+};
+
+export default ClientsPage;
+```
+
+## Programatic Routes
